@@ -20,7 +20,7 @@ class NewVisitorTest(LiveServerTestCase):
         # self.browser.get('http://localhost:8000')
         self.browser.get(self.live_server_url)
         header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('To-Do', header_text)
+        self.assertIn('작업 목록 시작', header_text)
 
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertEqual(
@@ -42,7 +42,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.check_for_row_in_list_table('1: 공작깃털 사기')
 
         self.browser.quit()
-        self.browser.PhantomJS()
+        self.browser = webdriver.PhantomJS()
 
         self.browser.get(self.live_server_url)
         page_text = self.browser.find_element_by_tag_name('body').text
