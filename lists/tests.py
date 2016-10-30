@@ -6,13 +6,14 @@ from django.template.loader import render_to_string
 from lists.models import Item
 from lists.views import home_page
 
+
 class HomePageTest(TestCase):
 
     def test_root_url_resolves_to_home_page_view(self):
         found = resolve('/')
         self.assertEqual(found.func, home_page)
 
-    def teste_home_page_returns_corrent_heml(self):
+    def teste_home_page_returns_corrent_html(self):
         request = HttpRequest()
         response = home_page(request)
         expected_html = render_to_string('home.html')
@@ -37,12 +38,9 @@ class ItemModelTest(TestCase):
         self.assertEqual(first_saved_item.text, '첫 번째 아이템')
         self.assertEqual(second_saved_item.text, '두 번째 아이템')
 
+
 class ListViewTest(TestCase):
     def test_users_list_template(self):
-        response = self.client.get('/lists/the-only-list-in-the-world/')
-        self.assertTemplateUsed(response, 'list.html')
-
-    def test_uses_list_template(self):
         response = self.client.get('/lists/the-only-list-in-the-world/')
         self.assertTemplateUsed(response, 'list.html')
 
@@ -54,6 +52,7 @@ class ListViewTest(TestCase):
 
         self.assertContains(response, 'itemey 1')
         self.assertContains(response, 'itemey 2')
+
 
 class NewListTest(TestCase):
     def test_save_a_POST_request(self):
