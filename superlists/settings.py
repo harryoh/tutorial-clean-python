@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
+    #'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -83,4 +83,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#STATIC_ROOT = '/Users/harry/work/temp/tutorials/python_tdd/superlists/lists/static/'
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static'))
